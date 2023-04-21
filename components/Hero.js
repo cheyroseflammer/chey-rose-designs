@@ -1,8 +1,57 @@
+'use client';
 import Link from 'next/link';
+import React from 'react';
+React.useLayoutEffect = React.useEffect;
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 const Hero = () => {
+  const heroRef = useRef();
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from('.reveal h1, .reveal h2', {
+        y: 200,
+        ease: 'power4.out',
+        autoAlpha: 0,
+        delay: 0,
+        duration: 1.8,
+      });
+      gsap.from('p.text', {
+        opacity: 0,
+        y: -100,
+        ease: 'power4.out',
+        delay: 1,
+        stagger: {
+          amount: 0.3,
+        },
+        duration: 1.8,
+        autoAlpha: 0,
+      });
+      gsap.from('.hr', {
+        width: 0,
+        ease: 'power4.out',
+        delay: 0,
+        stagger: {
+          amount: 0.3,
+        },
+        autoAlpha: 0,
+        duration: 1.8,
+      });
+      gsap.from('.nav-item, .nav-item-two', {
+        opacity: 0,
+        y: 100,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+        autoAlpha: 0,
+        duration: 1.8,
+      });
+    }, heroRef);
+    return () => ctx.revert();
+  }, []);
   return (
-    <section>
+    <section ref={heroRef}>
       <div className='row'>
         <div className='reveal'>
           <h1 className='primary'>Cheyenne</h1>
