@@ -1,26 +1,139 @@
-html,
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap');
+* {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
   box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+#__next {
+  width: 100vw;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #222222;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e6dfa8;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ddd374;
+}
+/* App Globals */
+@font-face {
+  font-family: Tabac;
+  src: url(../public/tabac.otf);
+}
+:root {
+  --primary-color: #fff0c0;
+  --secondary-color: #e9c64f;
+  --primary-font: Tabac;
+  --secondary-font: 'Poppins';
+}
+html,
+body {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  overflow-x: hidden;
+  width: 100%;
+}
+body {
+  font-family: var(--primary-font);
+  font-weight: 200;
+  background-color: #0c0c0c;
+  background-image: url(../public/grain.png);
+  background-repeat: no-repeat;
+  color: var(--primary-color);
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+.hr {
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+}
+.white-space {
+  width: 100%;
+  height: 50px;
+}
+/* Hero */
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.reveal {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 140px;
+  position: relative;
+}
+.reveal:nth-child(2) {
+  justify-content: flex-end;
+}
+.reveal h1 {
+  position: absolute;
+}
+h1.primary {
+  font-size: 5.4em;
+  font-weight: 400;
+}
+h2.secondary {
+  font-size: 3.2em;
+  font-weight: 200;
+}
+p.text {
+  padding: 0.8em 0;
+  font-family: var(--secondary-font);
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.nav-item {
+  width: 14em;
+  border-radius: 0 0 40px 0;
+  margin: 0.6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--secondary-color);
+  color: #0c0c0c;
+}
+.nav-item-two {
+  width: 16em;
+  border-radius: 0 0 40px 0;
+  margin: 0.6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--primary-color);
+  color: #0c0c0c;
+}
+.nav-item > p {
+  padding: 1em;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--secondary-font);
+}
+.nav-item-two > p {
+  padding: 1em;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--secondary-font);
+}
+.id {
+  margin-right: 0.8em;
+}
+/* About */
