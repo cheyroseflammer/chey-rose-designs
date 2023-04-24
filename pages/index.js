@@ -1,12 +1,174 @@
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Header from '../components/Header';
+import { Hero, Header, About, Projects, Socials, Contact } from '../components';
+import { useEffect } from 'react';
+import React from 'react';
+React.useLayoutEffect = React.useEffect;
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+function update() {
+  location.reload();
+}
 export default function App() {
+  // UPDATE ON APP RERENDER
+  useEffect(() => {
+    window.addEventListener('resize', update);
+  }, []);
+  const appRef = useRef();
+  // SCROLL TRIGGERS
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      let lines = gsap.utils.toArray('.hr');
+      lines.forEach((line) => {
+        gsap.from(line, {
+          width: 0,
+          opacity: 0,
+          duration: 1.8,
+          scrollTrigger: {
+            trigger: line,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+      });
+      gsap.from('p.about-paragraph', {
+        x: 820,
+        scrollTrigger: {
+          trigger: '.about-container',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        duration: 1.8,
+      });
+      let titles = gsap.utils.toArray('.section-title');
+      titles.forEach((title) => {
+        gsap.from(title, {
+          x: -600,
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+          duration: 1.8,
+        });
+      });
+      let orders = gsap.utils.toArray('.section-order');
+      orders.forEach((order) => {
+        gsap.from(order, {
+          x: 600,
+          scrollTrigger: {
+            trigger: order,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+          duration: 1.8,
+        });
+      });
+      let projects = gsap.utils.toArray('.menu');
+      projects.forEach((project) => {
+        gsap.from(project, {
+          x: -600,
+          scrollTrigger: {
+            trigger: project,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+          duration: 1.8,
+        });
+      });
+      let projectHeads = gsap.utils.toArray('.project-head');
+      projectHeads.forEach((head) => {
+        gsap.from(head, {
+          y: 600,
+          scrollTrigger: {
+            trigger: '.projects-container',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+          duration: 1.8,
+        });
+      });
+    }, appRef);
+    return () => ctx.revert();
+  }, []);
+  // REGULAR ANIMATION IN
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from('.reveal h1, .reveal h2', {
+        y: 200,
+        ease: 'power4.out',
+        autoAlpha: 0,
+        delay: 0,
+        duration: 1.8,
+      });
+      gsap.from('p.text', {
+        opacity: 0,
+        y: -100,
+        ease: 'power4.out',
+        delay: 1,
+        stagger: {
+          amount: 0.3,
+        },
+        duration: 1.8,
+        autoAlpha: 0,
+      });
+      gsap.from('.nav-item, .nav-item-two', {
+        opacity: 0,
+        y: 100,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+        autoAlpha: 0,
+        duration: 1.8,
+      });
+      gsap.from('.hr-hero', {
+        width: 0,
+        ease: 'power4.out',
+        delay: 0,
+        stagger: {
+          amount: 0.3,
+        },
+        autoAlpha: 0,
+        duration: 1.8,
+      });
+    }, appRef);
+    return () => ctx.revert();
+  }, []);
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from('.contact-details', {
+        x: -600,
+        scrollTrigger: {
+          trigger: '.contact-details',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        duration: 1.8,
+      });
+      gsap.from('.contact-form', {
+        x: 600,
+        scrollTrigger: {
+          trigger: '.contact-form',
+          start: 'top 90%',
+          toggleActions: 'play none none reverse',
+        },
+        duration: 1.8,
+      });
+    }, appRef);
+    return () => ctx.revert();
+  }, []);
   return (
-    <div className='wrapper'>
+    <div className='wrapper' ref={appRef}>
       <Hero />
-      <Header order='003' title='about' />
+      <Header order='001' title='about' />
       <About />
+      <Header order='002' title='projects' />
+      <Projects />
+      <Header order='003' title='socials' />
+      <Socials />
+      <Header order='004' title='contact' />
+      <Contact />
     </div>
   );
 }
