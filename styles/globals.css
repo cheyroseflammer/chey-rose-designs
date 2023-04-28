@@ -4,12 +4,22 @@
   margin: 0;
   box-sizing: border-box;
 }
-#__next {
-  width: 100vw;
-}
 a {
   text-decoration: none;
   color: inherit;
+}
+/* HIDDEN */
+.about-text,
+.hr-hero,
+.reveal h1,
+h2,
+p.text,
+.nav-item,
+.nav-item-two,
+.section-title,
+.section-order,
+.hr {
+  visibility: hidden;
 }
 /* Scroll Bar */
 ::-webkit-scrollbar {
@@ -28,7 +38,7 @@ a {
 /* App Globals */
 @font-face {
   font-family: Tabac;
-  src: url(../public/tabac.otf);
+  src: url('/tabac.otf');
 }
 :root {
   --primary-color: #fff0c0;
@@ -37,29 +47,32 @@ a {
   --primary-font: Tabac;
   --secondary-font: 'Poppins';
 }
-html {
+/* html {
   scroll-behavior: smooth !important;
+} */
+#__next {
+  width: 95vw;
 }
 html,
 body {
   display: flex;
   justify-content: center;
   align-self: center;
-  width: 100vw;
 }
 body {
   font-family: var(--primary-font);
   font-weight: 200;
   background-color: var(--primary-black);
-  background-image: url(../public/grain.png);
+  background-image: url('/grain.webp');
   background-repeat: repeat;
+  object-fit: cover;
   color: var(--primary-color);
-  overflow-x: hidden;
 }
 .wrapper {
   width: 100%;
   height: 100%;
   padding: 2rem;
+  overflow-x: hidden;
 }
 .hr {
   width: 100%;
@@ -360,11 +373,6 @@ img.smile {
   align-items: center;
   justify-content: center;
 }
-.contact-details p {
-  font-size: 3.8em;
-  line-height: 80px;
-  padding-top: 0.8em;
-}
 input {
   background: none;
   outline: none;
@@ -375,7 +383,7 @@ input {
   color: var(--primary-color);
 }
 input.contact-input {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--secondary-font);
   font-weight: 300;
 }
 .field {
@@ -408,7 +416,7 @@ textarea#message::placeholder {
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 100;
-  font-family: 'Poppins';
+  font-family: var(--secondary-font);
 }
 .submit {
   width: 100%;
@@ -442,5 +450,87 @@ textarea#message::placeholder {
   }
   100% {
     transform: translate(-100%, 0);
+  }
+}
+/* MEDIA QUERIES */
+@media (max-width: 800px) {
+  .wrapper {
+    padding: 1rem;
+  }
+  .reveal {
+    height: 120px;
+  }
+  .white-space {
+    height: 80px;
+  }
+  .socials-container .social-links a {
+    font-size: 30px;
+  }
+}
+@media (max-width: 724px) {
+  h2.secondary {
+    font-size: 1.4em;
+  }
+  h1.primary {
+    font-size: 2.3em;
+  }
+  p.text {
+    font-size: 14px;
+  }
+  .reveal {
+    margin-top: 5px;
+    height: 40px;
+  }
+  .white-space {
+    height: 20px;
+  }
+  .socials-container .social-links a {
+    font-size: 20px;
+  }
+  .nav-item {
+    flex-direction: column;
+  }
+  .row {
+    align-items: center;
+  }
+  .contact-details p {
+    font-size: 2.5em;
+  }
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .col {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  a.project-link {
+    font-size: 14px;
+    line-height: 2px;
+  }
+  p.project-design {
+    font-size: 14px;
+  }
+  canvas {
+    height: 400px;
+    width: 400px;
+  }
+}
+@media (max-width: 415px) {
+  .row.intro p {
+    font-size: 9px;
+  }
+  .contact-details p {
+    font-size: 2.4em;
+  }
+  .marquee-contact span.contact-span {
+    font-size: 6em;
+  }
+  .bar {
+    padding: 0;
+  }
+  .middle {
+    font-size: 1.2rem;
   }
 }

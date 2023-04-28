@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import todoImage from '../public/todo.png';
-import lostArt from '../public/lostArt.png';
-import deathly from '../public/deathly.png';
-import hoobank from '../public/hoobank.png';
+import lostArt from '../public/lostArt.webp';
+import deathly from '../public/deathly.webp';
+import hoobank from '../public/hoobank.webp';
 
 const Projects = () => {
   return (
@@ -22,8 +22,8 @@ const Projects = () => {
                 className='menu-item-img'
                 src={todoImage}
                 alt='image'
-                height={300}
-                width={400}
+                height={900}
+                width={900}
                 quality={100}
               />
               <div className='marquee'>

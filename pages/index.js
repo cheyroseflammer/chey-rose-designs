@@ -6,14 +6,15 @@ import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
-function update() {
-  location.reload();
-}
+// Change it to say screen size bigger than 768px do -->
+// function update() {
+//   location.reload();
+// }
 export default function App() {
   // UPDATE ON APP RERENDER
-  useEffect(() => {
-    window.addEventListener('resize', update);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('resize', update);
+  // }, []);
   const appRef = useRef();
   // SCROLL TRIGGERS
   useLayoutEffect(() => {
@@ -22,7 +23,7 @@ export default function App() {
       lines.forEach((line) => {
         gsap.from(line, {
           width: 0,
-          opacity: 0,
+          autoAlpha: 0,
           duration: 1.8,
           scrollTrigger: {
             trigger: line,
@@ -31,11 +32,12 @@ export default function App() {
           },
         });
       });
-      gsap.from('p.about-paragraph', {
+      gsap.from('.about-text', {
         x: 820,
+        autoAlpha: 0,
         scrollTrigger: {
           trigger: '.about-container',
-          start: 'top 70%',
+          start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
         duration: 1.8,
@@ -44,9 +46,10 @@ export default function App() {
       titles.forEach((title) => {
         gsap.from(title, {
           x: -600,
+          autoAlpha: 0,
           scrollTrigger: {
             trigger: title,
-            start: 'top 90%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
           duration: 1.8,
@@ -56,9 +59,10 @@ export default function App() {
       orders.forEach((order) => {
         gsap.from(order, {
           x: 600,
+          autoAlpha: 0,
           scrollTrigger: {
             trigger: order,
-            start: 'top 90%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
           duration: 1.8,
@@ -70,7 +74,7 @@ export default function App() {
           x: -600,
           scrollTrigger: {
             trigger: project,
-            start: 'top 90%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
           duration: 1.8,
@@ -82,7 +86,7 @@ export default function App() {
           y: 600,
           scrollTrigger: {
             trigger: '.projects-container',
-            start: 'top 90%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
           duration: 1.8,
@@ -140,8 +144,8 @@ export default function App() {
       gsap.from('.contact-details', {
         x: -600,
         scrollTrigger: {
-          trigger: '.contact-details',
-          start: 'top 70%',
+          trigger: '.contact-span',
+          start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
         duration: 1.8,
@@ -149,8 +153,8 @@ export default function App() {
       gsap.from('.contact-form', {
         x: 600,
         scrollTrigger: {
-          trigger: '.contact-form',
-          start: 'top 90%',
+          trigger: '.contact-span',
+          start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
         duration: 1.8,

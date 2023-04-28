@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import smiles from '../public/smiles.png';
-import Smile from './Smile';
+import smiles from '../public/smiles.webp';
 import { Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Stats } from '@react-three/drei';
+import Smiley from './Smiley';
 
 const Contact = () => {
   return (
@@ -42,9 +42,15 @@ const Contact = () => {
             <ambientLight intensity={0.5} />
             <pointLight color='white' intensity={1} position={[10, 10, 10]} />
             <Suspense fallback={null}>
-              <Smile position={[0, -1, 0]} />
+              {' '}
+              <Smiley position={[0, -1, 0]} />
             </Suspense>
-            <OrbitControls autoRotate={true} enableZoom={false} enableRotate={false} />
+            <OrbitControls
+              autoRotate={true}
+              enableZoom={false}
+              enableRotate={false}
+              enablePan={false}
+            />
           </Canvas>
         </div>
         <div className='contact-form col'>
