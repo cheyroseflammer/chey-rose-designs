@@ -50,6 +50,7 @@ const Contact = () => {
               enableZoom={false}
               enableRotate={false}
               enablePan={false}
+              rotateSpeed={3.5}
             />
           </Canvas>
         </div>
