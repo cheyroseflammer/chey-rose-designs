@@ -63,7 +63,7 @@ body {
 body {
   font-family: var(--primary-font);
   font-weight: 200;
-  background-image: url('/grain.webp');
+  background-image: url('/testy.jpg');
   background-repeat: repeat;
   background-size: auto;
   color: var(--primary-color);
@@ -454,6 +454,12 @@ textarea#message::placeholder {
 }
 /* MEDIA QUERIES */
 @media (max-width: 800px) {
+  h2.secondary {
+    font-size: 2.4em;
+  }
+  h1.primary {
+    font-size: 4.5em;
+  }
   .wrapper {
     padding: 1rem;
   }
@@ -467,12 +473,12 @@ textarea#message::placeholder {
     font-size: 30px;
   }
 }
-@media (max-width: 724px) {
+@media (max-width: 714px) {
   h2.secondary {
-    font-size: 1.4em;
+    font-size: 2.4em;
   }
   h1.primary {
-    font-size: 2.3em;
+    font-size: 3.3em;
   }
   p.text {
     font-size: 14px;
@@ -518,6 +524,12 @@ textarea#message::placeholder {
   }
 }
 @media (max-width: 428px) {
+  h2.secondary {
+    font-size: 1.4em;
+  }
+  h1.primary {
+    font-size: 2.3em;
+  }
   .row.intro p {
     font-size: 9px;
   }
@@ -548,6 +560,9 @@ textarea#message::placeholder {
   p.about-paragraph {
     font-size: 18px;
   }
+  p.quote {
+    font-size: 16px;
+  }
 }
 @media (max-width: 360px) {
   p.text {
@@ -572,5 +587,10 @@ textarea#message::placeholder {
   }
   p.project-type {
     font-size: 10px;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
   }
 }
