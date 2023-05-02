@@ -24,7 +24,8 @@ export default function App() {
         gsap.from(line, {
           width: 0,
           autoAlpha: 0,
-          duration: 1.8,
+          delay: 1,
+          duration: 1,
           scrollTrigger: {
             trigger: line,
             start: 'top 90%',
@@ -99,11 +100,14 @@ export default function App() {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.from('.reveal h1, .reveal h2', {
-        y: 200,
+        y: -300,
         ease: 'power4.out',
         autoAlpha: 0,
-        delay: 0,
+        delay: 1,
         duration: 1.8,
+        stagger: {
+          amount: 0.3,
+        },
       });
       gsap.from('p.text', {
         opacity: 0,
@@ -125,6 +129,7 @@ export default function App() {
         },
         autoAlpha: 0,
         duration: 1.8,
+        delay: 1,
       });
       gsap.from('.hr-hero', {
         width: 0,

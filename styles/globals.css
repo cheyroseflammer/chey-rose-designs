@@ -63,10 +63,9 @@ body {
 body {
   font-family: var(--primary-font);
   font-weight: 200;
-  background-color: var(--primary-black);
   background-image: url('/grain.webp');
   background-repeat: repeat;
-  object-fit: cover;
+  background-size: auto;
   color: var(--primary-color);
 }
 .wrapper {
@@ -196,7 +195,7 @@ p.about-paragraph {
   border-left: 4px solid var(--primary-color);
 }
 /* Projects */
-p.project-design {
+p.project-type {
   padding: 0.8em 0;
   font-family: var(--secondary-font);
   font-size: var(--font-size);
@@ -227,7 +226,7 @@ p.project-design {
   transition-duration: 0.1s;
   opacity: 0;
 }
-.menu-item-img {
+img.menu-item-img {
   pointer-events: none;
   position: absolute;
   max-height: 600px;
@@ -486,7 +485,7 @@ textarea#message::placeholder {
     height: 20px;
   }
   .socials-container .social-links a {
-    font-size: 40px;
+    font-size: 36px;
   }
   .nav-item {
     flex-direction: column;
@@ -510,7 +509,7 @@ textarea#message::placeholder {
     font-size: 14px;
     line-height: 2px;
   }
-  p.project-design {
+  p.project-type {
     font-size: 14px;
   }
   canvas {
@@ -518,7 +517,7 @@ textarea#message::placeholder {
     width: 400px;
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 428px) {
   .row.intro p {
     font-size: 9px;
   }
@@ -537,7 +536,7 @@ textarea#message::placeholder {
   p.text {
     font-size: 12px;
   }
-  p.project-design {
+  p.project-type {
     font-size: 11.9px;
   }
   .nav-item-two > p {
@@ -557,7 +556,7 @@ textarea#message::placeholder {
   h2.secondary {
     font-size: 1.3em;
   }
-  p.project-design {
+  p.project-type {
     font-size: 12px;
   }
   .nav-item {
@@ -571,7 +570,7 @@ textarea#message::placeholder {
   p.text {
     font-size: 9.5px;
   }
-  p.project-design {
+  p.project-type {
     font-size: 10px;
   }
 }

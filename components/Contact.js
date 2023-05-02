@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import smiles from '../public/smiles.webp';
 import { Suspense } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Stats } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import Smiley from './Smiley';
 
 const Contact = () => {
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    function size() {
+      setWidth(window.innerWidth);
+    }
+    size();
+  }, [setWidth]);
   return (
     <section className='contact-container' id='contact'>
       <div className='top-bar'>
@@ -42,15 +49,14 @@ const Contact = () => {
             <ambientLight intensity={0.5} />
             <pointLight color='white' intensity={1} position={[10, 10, 10]} />
             <Suspense fallback={null}>
-              {' '}
               <Smiley position={[0, -1, 0]} />
             </Suspense>
             <OrbitControls
               autoRotate={true}
               enableZoom={false}
-              enableRotate={false}
               enablePan={false}
-              rotateSpeed={3.5}
+              enableRotate={false}
+              autoRotateSpeed={width < 724 ? 5 : 2}
             />
           </Canvas>
         </div>
