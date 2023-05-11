@@ -26,7 +26,7 @@ const Hero = () => {
       <div className='row'>
         <div className='nav-item-two'>
           <p className='item'>
-            <Link href='#about' className='link'>
+            <Link href='#about' prefetch={false} className='link'>
               ABOUT
             </Link>
           </p>
@@ -37,7 +37,7 @@ const Hero = () => {
         </div>
         <div className='nav-item'>
           <p className='item'>
-            <Link href='#projects' className='link'>
+            <Link href='#projects' prefetch={false} className='link'>
               PROJECTS
             </Link>
           </p>
@@ -51,7 +51,7 @@ const Hero = () => {
         </div>
         <div className='nav-item'>
           <p className='item'>
-            <Link href='#socials' className='link'>
+            <Link href='#socials' prefetch={false} className='link'>
               SOCIALS
             </Link>
           </p>
@@ -68,7 +68,7 @@ const Hero = () => {
         </div>
         <div className='nav-item-two'>
           <p className='item'>
-            <Link href='#contact' className='link'>
+            <Link href='#contact' prefetch={false} className='link'>
               CONTACT
             </Link>
           </p>

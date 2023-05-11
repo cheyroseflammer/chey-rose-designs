@@ -17,14 +17,7 @@ const Projects = () => {
             <div className='hr'></div>
             <div className='menu-item'>
               <p className='menu-item-link'>Lost Art Design</p>
-              <Image
-                className='menu-item-img'
-                src={lostArt}
-                alt='image'
-                quality={100}
-                height={600}
-                width={300}
-              />
+              <Image className='menu-item-img' src={lostArt} alt='image' />
               <div className='marquee'>
                 <div className='marquee-inner'>
                   <p className='marquee-text'>Lost Art Design</p>
@@ -49,14 +42,7 @@ const Projects = () => {
             <div className='hr'></div>
             <div className='menu-item'>
               <p className='menu-item-link'>Deathly Design</p>
-              <Image
-                className='menu-item-img'
-                src={deathly}
-                alt='image'
-                quality={100}
-                height={600}
-                width={300}
-              />
+              <Image className='menu-item-img' src={deathly} alt='image' />
               <div className='marquee'>
                 <div className='marquee-inner'>
                   <p className='marquee-text'>Deathly Design</p>
@@ -81,14 +67,7 @@ const Projects = () => {
             <div className='hr'></div>
             <div className='menu-item'>
               <p className='menu-item-link'>Hoobank Design</p>
-              <Image
-                className='menu-item-img'
-                src={hoobank}
-                alt='image'
-                quality={100}
-                height={600}
-                width={300}
-              />
+              <Image className='menu-item-img' src={hoobank} alt='image' />
               <div className='marquee'>
                 <div className='marquee-inner'>
                   <p className='marquee-text'>Hoobank Design</p>

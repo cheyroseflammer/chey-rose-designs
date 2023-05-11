@@ -12,7 +12,7 @@ a {
 .about-text,
 .hr-hero,
 .reveal h1,
-h2,
+.reveal h2,
 p.text,
 .nav-item,
 .nav-item-two,
@@ -38,7 +38,8 @@ p.text,
 /* App Globals */
 @font-face {
   font-family: Tabac;
-  src: url('/tabac.otf');
+  src: url('/tabac.woff2') format('woff2');
+  font-display: swap;
 }
 :root {
   --primary-color: #fff0c0;
@@ -63,7 +64,7 @@ body {
 body {
   font-family: var(--primary-font);
   font-weight: 200;
-  background-image: url('/testy.jpg');
+  background-image: url('/grainBack.webp');
   background-repeat: repeat;
   background-size: auto;
   color: var(--primary-color);
@@ -567,9 +568,6 @@ textarea#message::placeholder {
 @media (max-width: 360px) {
   p.text {
     font-size: 11.5px;
-  }
-  h2.secondary {
-    font-size: 1.3em;
   }
   p.project-type {
     font-size: 12px;

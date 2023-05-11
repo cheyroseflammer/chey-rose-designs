@@ -6,6 +6,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta charSet='UTF-8' />
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='keywords' content='web, design, development, animations, development' />
         <meta name='author' content='Chey Rose' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
           name='description'
           content='Need a website that can keep up with your captivating art? Look no further, our speciality animations and design will leave a lasting impression on your audience.'
         />
-        <link rel='shortcut icon' href='/favicon.png' />
+        <link rel='shortcut icon' href='/favicon.webp' />
         <title>Chey Rose Designs</title>
       </Head>
       <Component {...pageProps} />

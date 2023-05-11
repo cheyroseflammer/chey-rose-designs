@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import smiles from '../public/smiles.webp';
-import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import Smiley from './Smiley';
 
 const Contact = () => {
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    function size() {
-      setWidth(window.innerWidth);
-    }
-    size();
-  }, [setWidth]);
+  const LazyCanvas = dynamic(() => import('../components/Canvas'), {
+    ssr: false,
+  });
   return (
     <section className='contact-container' id='contact'>
       <div className='top-bar'>
@@ -32,7 +25,9 @@ const Contact = () => {
         </div>
         <div className='email'>
           <p>
-            <Link href='mailto:'>email</Link>
+            <Link href='mailto:' prefetch={false}>
+              email
+            </Link>
           </p>
         </div>
       </div>
@@ -45,20 +40,9 @@ const Contact = () => {
       </div>
       <div className='contact-section'>
         <div className='contact-details col'>
-          <Canvas className='canvas' camera={{ fov: 35, zoom: 1, near: 1, far: 1000 }}>
-            <ambientLight intensity={0.5} />
-            <pointLight color='white' intensity={1} position={[10, 10, 10]} />
-            <Suspense fallback={null}>
-              <Smiley position={[0, -1, 0]} />
-            </Suspense>
-            <OrbitControls
-              autoRotate={true}
-              enableZoom={false}
-              enablePan={false}
-              enableRotate={false}
-              autoRotateSpeed={width < 724 ? 5 : 2}
-            />
-          </Canvas>
+          <Suspense fallback={null}>
+            <LazyCanvas />
+          </Suspense>
         </div>
         <div className='contact-form col'>
           <div className='form-wrapper'>

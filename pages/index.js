@@ -1,16 +1,22 @@
-import { Hero, Header, About, Projects, Socials, Contact } from '../components';
-import { useEffect } from 'react';
+import { Hero, Header, About, Socials } from '../components';
 import React from 'react';
 React.useLayoutEffect = React.useEffect;
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import dynamic from 'next/dynamic';
 gsap.registerPlugin(ScrollTrigger);
 // Change it to say screen size bigger than 768px do -->
 // function update() {
 //   location.reload();
 // }
 export default function App() {
+  const ContactLazy = dynamic(() => import('../components/Contact'), {
+    ssr: false,
+  });
+  const ProjectsLazy = dynamic(() => import('../components/Projects'), {
+    ssr: false,
+  });
   // UPDATE ON APP RERENDER
   // useEffect(() => {
   //   window.addEventListener('resize', update);
@@ -173,11 +179,11 @@ export default function App() {
       <Header order='001' title='about' />
       <About />
       <Header order='002' title='projects' />
-      <Projects />
+      <ProjectsLazy />
       <Header order='003' title='socials' />
       <Socials />
       <Header order='004' title='contact' />
-      <Contact />
+      <ContactLazy />
     </div>
   );
 }
