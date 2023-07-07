@@ -4,6 +4,7 @@ import Link from 'next/link';
 import lostArt from '../public/lostArt.webp';
 import deathly from '../public/deathly.webp';
 import hoobank from '../public/hoobank.webp';
+import todo from '../public/todo.gif';
 import { useLayoutEffect, useRef } from 'react';
 React.useLayoutEffect = React.useEffect;
 import { gsap } from 'gsap';
@@ -160,7 +161,7 @@ const Projects = () => {
             <div className='hr'></div>
             <div className='menu-item'>
               <p className='menu-item-link'>Todo PERN App</p>
-              <Image className='menu-item-img' src={hoobank} alt='image' rel='preload' />
+              <Image className='menu-item-img' src={todo} alt='image' rel='preload' />
               <div className='marquee'>
                 <div className='marquee-inner'>
                   <p className='marquee-text'>Todo PERN App</p>
