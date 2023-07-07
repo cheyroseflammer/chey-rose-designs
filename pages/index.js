@@ -1,26 +1,12 @@
 import { Hero, Header, About, Socials } from '../components';
 import React from 'react';
-React.useLayoutEffect = React.useEffect;
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import dynamic from 'next/dynamic';
 gsap.registerPlugin(ScrollTrigger);
-// Change it to say screen size bigger than 768px do -->
-// function update() {
-//   location.reload();
-// }
+
 export default function App() {
-  const ContactLazy = dynamic(() => import('../components/Contact'), {
-    ssr: false,
-  });
-  const ProjectsLazy = dynamic(() => import('../components/Projects'), {
-    ssr: false,
-  });
-  // UPDATE ON APP RERENDER
-  // useEffect(() => {
-  //   window.addEventListener('resize', update);
-  // }, []);
   const appRef = useRef();
   // SCROLL TRIGGERS
   useLayoutEffect(() => {
@@ -69,30 +55,6 @@ export default function App() {
           autoAlpha: 0,
           scrollTrigger: {
             trigger: order,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-          duration: 1.8,
-        });
-      });
-      let projects = gsap.utils.toArray('.menu');
-      projects.forEach((project) => {
-        gsap.from(project, {
-          x: -600,
-          scrollTrigger: {
-            trigger: project,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-          duration: 1.8,
-        });
-      });
-      let projectHeads = gsap.utils.toArray('.project-head');
-      projectHeads.forEach((head) => {
-        gsap.from(head, {
-          y: 600,
-          scrollTrigger: {
-            trigger: '.projects-container',
             start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
@@ -150,40 +112,23 @@ export default function App() {
     }, appRef);
     return () => ctx.revert();
   }, []);
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from('.contact-details', {
-        x: -600,
-        scrollTrigger: {
-          trigger: '.contact-span',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-        duration: 1.8,
-      });
-      gsap.from('.contact-form', {
-        x: 600,
-        scrollTrigger: {
-          trigger: '.contact-span',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-        duration: 1.8,
-      });
-    }, appRef);
-    return () => ctx.revert();
-  }, []);
+  const LazyProjects = dynamic(() => import('../components/Projects'), {
+    ssr: false,
+  });
+  const LazyContact = dynamic(() => import('../components/Contact'), {
+    ssr: false,
+  });
   return (
     <div className='wrapper' ref={appRef}>
       <Hero />
       <Header order='001' title='about' />
       <About />
       <Header order='002' title='projects' />
-      <ProjectsLazy />
+      <LazyProjects />
       <Header order='003' title='socials' />
       <Socials />
       <Header order='004' title='contact' />
-      <ContactLazy />
+      <LazyContact />
     </div>
   );
 }

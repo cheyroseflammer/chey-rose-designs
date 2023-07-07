@@ -1,15 +1,58 @@
-import React, { Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import smiles from '../public/smiles.webp';
+import { useLayoutEffect, useRef } from 'react';
+React.useLayoutEffect = React.useEffect;
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+import dynamic from 'next/dynamic';
 
 const Contact = () => {
-  const LazyCanvas = dynamic(() => import('../components/Canvas'), {
+  const contactRef = useRef();
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      let lines = gsap.utils.toArray('.hr');
+      lines.forEach((line) => {
+        gsap.from(line, {
+          width: 0,
+          autoAlpha: 0,
+          delay: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: line,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+      });
+      gsap.from('.contact-details', {
+        x: -600,
+        scrollTrigger: {
+          trigger: '.contact-span',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+        duration: 1.8,
+      });
+      gsap.from('.contact-form', {
+        x: 600,
+        scrollTrigger: {
+          trigger: '.contact-span',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+        duration: 1.8,
+      });
+    }, contactRef);
+    return () => ctx.revert();
+  }, []);
+  const LazyCanvas = dynamic(() => import('./Canvas'), {
     ssr: false,
   });
   return (
-    <section className='contact-container' id='contact'>
+    <section className='contact-container' id='contact' ref={contactRef}>
       <div className='top-bar'>
         <p className='quote'>{`"What separates design from art is that design is meant to be... functional."`}</p>
       </div>
@@ -40,9 +83,7 @@ const Contact = () => {
       </div>
       <div className='contact-section'>
         <div className='contact-details col'>
-          <Suspense fallback={null}>
-            <LazyCanvas />
-          </Suspense>
+          <LazyCanvas />
         </div>
         <div className='contact-form col'>
           <div className='form-wrapper'>
