@@ -20,6 +20,7 @@ p.text,
 .section-order,
 .hr {
   visibility: hidden;
+  will-change: transform, opacity;
 }
 /* Scroll Bar */
 ::-webkit-scrollbar {
@@ -79,11 +80,15 @@ body {
   width: 100%;
   height: 2px;
   background: var(--primary-color);
+  will-change: transform, opacity;
+
 }
 .hr-hero {
   width: 100%;
   height: 2px;
   background: var(--primary-color);
+  will-change: transform, opacity;
+
 }
 .white-space {
   width: 100%;
@@ -122,10 +127,12 @@ h3.section-order {
 h1.primary {
   font-size: 6.4em;
   font-weight: 400;
+  font-display: swap;
 }
 h2.secondary {
   font-size: 4.2em;
   font-weight: 200;
+  font-display: swap;
 }
 p.text {
   padding: 0.8em 0;
