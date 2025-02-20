@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import smiles from '../public/smiles.webp';
-import dynamic from 'next/dynamic';
-import { gsap } from 'gsap';
-import { setupContactAnimations } from '../utils/gsapAnimations';
+import React, { useLayoutEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import smiles from "../public/smiles.webp";
+import dynamic from "next/dynamic";
+import { gsap } from "gsap";
+import { setupContactAnimations } from "../utils/gsapAnimations";
 
 const Contact = () => {
 	const contactRef = useRef(null);
@@ -14,7 +14,7 @@ const Contact = () => {
 		return () => ctx.revert();
 	}, []);
 
-	const LazyCanvas = dynamic(() => import('./Canvas'), {
+	const LazyCanvas = dynamic(() => import("./Canvas"), {
 		ssr: false,
 	});
 
@@ -55,9 +55,7 @@ const Contact = () => {
 				</span>
 			</div>
 			<div className="contact-section">
-				<div className="contact-details col">
-					<LazyCanvas />
-				</div>
+				<div className="contact-details col">{/* <LazyCanvas /> */}</div>
 				<div className="contact-form col">
 					<div className="form-wrapper">
 						<form action="https://formspree.io/f/xknqdqkv" method="POST">
